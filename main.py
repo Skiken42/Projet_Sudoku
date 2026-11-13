@@ -1,8 +1,160 @@
-taille_mat = 9
+# Les importations
+import numpy as np
 
-def generer_sudoku(taille):
-    # Code pour générer un sudoku de taille 'taille'
-    mat = 
+size_mat = 9
+def genereate_diagonal():
+    mat = np.zeros(size,size)
+    for i in range (0, 2):
+        for j in range(0, 2):
+            mat[i][j]
+def generate_sudoku(size, difficulty):
+    
+    for i in range (0,8):
+        for j in range (0,8):
+def 
 
 
-print("Hello world")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+print("Ligne de séparation")
+
+def
