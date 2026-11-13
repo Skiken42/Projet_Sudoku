@@ -157,4 +157,20 @@ def
 
 print("Ligne de séparation")
 
-def
+def valid_row(mat,i,val):
+    can_place = True
+    for x in range(0,size_mat):
+        if mat[[i],[x]] == val:
+            can_place = False
+    return can_place
+
+def valid_column(mat,j,val):
+    can_place = True
+    for x in range(0,size_mat):
+        if mat[[x],[j]] == val:
+            can_place = False
+    return can_place
+        
+def number_to_place(mat,i,j):
+    number = list(range(1,size_mat,1))        
+    return number
