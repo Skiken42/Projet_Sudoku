@@ -6,14 +6,14 @@ size_mat = 9
 def valid_row(mat,i,val):
     can_place = True
     for x in range(0,size_mat):
-        if mat[[i],[x]] == val:
+        if mat[i,x] == val:
             can_place = False
     return can_place
 
 def valid_column(mat,j,val):
     can_place = True
     for x in range(0,size_mat):
-        if mat[[x],[j]] == val:
+        if mat[x,j] == val:
             can_place = False
     return can_place
 
@@ -29,6 +29,9 @@ def valid_square(mat, i,j, val):
             if mat[start_row+k, start_col+l] == val:
                 return False
     return True
+
+def is_valid(mat,i,j,val):
+    return valid_row(mat,i,val) and valid_column(mat,j,val) and valid_square(mat,i,j,val)
 def genereate_diagonal():
     mat = np.zeros((size_mat,size_mat))
     for i in range (0, 3):
@@ -47,6 +50,28 @@ def genereate_diagonal():
             mat[i+6, j+6] = n
     return mat   
 
+
+def fill(mat):
+    for i in range(9):
+        for j in range(9):
+            if mat[i, j] == 0:
+                l_candidates = list(range(1,size_mat+1))
+                rd.shuffle(l_candidates)
+                for n in l_candidates:
+                    if is_valid(mat,i,j,n):
+                        mat[i,j] = n
+                        if fill(mat):
+                            return True
+                        else:
+                            mat[i,j] = 0 #backtrack, on tombe dans un cas impossible
+                return False
+    return True
+
+def generate_sudoku():
+    mat = genereate_diagonal()
+    fill(mat)
+    return mat
+
 def show_grid(mat):
     for i in range (size_mat):
         for j in range (size_mat):
@@ -54,4 +79,4 @@ def show_grid(mat):
         print()
 
 
-show_grid(genereate_diagonal())
+show_grid(generate_sudoku())
