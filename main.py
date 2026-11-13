@@ -1,20 +1,49 @@
 # Les importations
 import numpy as np
+import random as rd
 
 size_mat = 9
+def valid_square(mat, i,j, val):
+    start_row = (i // 3) * 3
+    start_col = (j // 3) *3
+    for k in range (0,3):
+        for l in range (0,3):
+            if mat[start_row+k, start_col+l] == val:
+                return False
+    return True
 def genereate_diagonal():
-    mat = np.zeros(size,size)
-    for i in range (0, 2):
-        for j in range(0, 2):
-            mat[i][j]
-def generate_sudoku(size, difficulty):
-    
-    for i in range (0,8):
-        for j in range (0,8):
-def 
+    mat = np.zeros((size_mat,size_mat))
+    for i in range (0, 3):
+        for j in range(0, 3):
+            n=rd.randint(1,9)
+            while not (valid_square(mat, i, j, n)):
+                n=rd.randint(1,9)
+            mat[i, j] = n
+            n=rd.randint(1,9)
+            while not (valid_square(mat, i+3, j+3, n)):
+                n=rd.randint(1,9)
+            mat[i+3, j+3] = n
+            n=rd.randint(1,9)
+            while not (valid_square(mat, i+6, j+6, n)):
+                n=rd.randint(1,9)
+            mat[i+6, j+6] = n
+    return mat   
 
+def generate_sudoku(difficulty):
+    mat = genereate_diagonal()
+    for i in range(9):
+        for j in range(9):
+            if mat[i, j] == 0:
+                
+  
+def show_grid(mat):
+    for i in range (size_mat):
+        for j in range (size_mat):
+            print(mat[i,j], end=" ")
+        print()
 
 
+show_grid(genereate_diagonal())
 
 
 
@@ -88,73 +117,3 @@ def
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-print("Ligne de séparation")
-
-def
