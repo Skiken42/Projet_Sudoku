@@ -3,6 +3,24 @@ import numpy as np
 import random as rd
 
 size_mat = 9
+def valid_row(mat,i,val):
+    can_place = True
+    for x in range(0,size_mat):
+        if mat[[i],[x]] == val:
+            can_place = False
+    return can_place
+
+def valid_column(mat,j,val):
+    can_place = True
+    for x in range(0,size_mat):
+        if mat[[x],[j]] == val:
+            can_place = False
+    return can_place
+
+def number_to_place(mat,i,j):
+    number = list(range(1,size_mat,1))
+    return number
+
 def valid_square(mat, i,j, val):
     start_row = (i // 3) * 3
     start_col = (j // 3) *3
@@ -29,11 +47,7 @@ def genereate_diagonal():
             mat[i+6, j+6] = n
     return mat   
 
-def generate_sudoku(difficulty):
-    mat = genereate_diagonal()
-    for i in range(9):
-        for j in range(9):
-            if mat[i, j] == 0:
+
                 
   
 def show_grid(mat):
@@ -44,8 +58,6 @@ def show_grid(mat):
 
 
 show_grid(genereate_diagonal())
-
-
 
 
 
