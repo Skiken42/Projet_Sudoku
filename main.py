@@ -17,9 +17,12 @@ def valid_column(mat,j,val):
             can_place = False
     return can_place
 
-def number_to_place(mat,i,j):
-    number = list(range(1,size_mat,1))
-    return number
+def seen_state(matrix):
+    seen=[]
+    for i in range (size_mat):
+        for j in range (size_mat):
+            seen.append(matrix[i,j])
+    return seen
 
 def valid_square(mat, i,j, val):
     start_row = (i // 3) * 3
