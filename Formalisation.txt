@@ -1,0 +1,17 @@
+Formalisation comme un problème de planification.
+
+But: Remplir la grille sans avoir un de doublon dans la ligne / colonne ou carré.
+
+Etat initial: Un plateau N x N avec entre 17 valeurs positionnées aléatoirement (En respectant les règles d'unicité ligne/colonne/carré), les valeurs sont contenues entre 1 et N inclus.
+
+Action: Placer une valeur sur une case vide (Dans notre cas O indique une correspond à une case vide) et faire attention à respecter la règle d'unicité des valeurs (ligne/colonne/carré).
+
+Coût: Unitaire, placer une valeur coûte 1.
+
+Espace d'états: Toutes les configurations possibles du plateau, soit au plus N^(N²).
+
+Chemin: Une suite d'états, chacun obtenu à partir du précédent par une action.
+
+Solution: Un chemin d'états qui va de l'état initial à l'état but.
+
+Chaque action pose exactement une valeur. Une solution fait exactement T action. Où T est le nombre total de jetons - le nombre de jetons au départ.
