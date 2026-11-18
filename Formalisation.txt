@@ -1,4 +1,12 @@
-Formalisation comme un problème de planification.
+1)Le problème: Sudoku solver
+On dispose d'un plateau de taille N x N cases. Chaque cases est soit vide (représentées par un 0), soit occupée par une valeur comprise entre 1 et N inclus. Dans notre cas nous allons prendre N=9 car c'est la taille d'un sudoku classique, néanmoins notre programme peut résoudre n'importe quelle sudoku. Le but est de remplir la grille en respectant l'unicité des valeurs entre 1 et N sur la ligne, la colonne et région. Une région est un bloc de taille N (Pour notre exemple elle est de taille 9 3x3) ou l'on retrouve chaque valeur de 1 à N.
+
+Règles d'un coup:
+-On choisit une case vide et on place un valeur entre 1 et N
+-On vérifie si la valeur choisi ne viole pas les règles d'unicité pour la région, la ligne et la colonne.
+
+
+2)Formalisation comme un problème de planification.
 
 But: Remplir la grille sans avoir un de doublon dans la ligne / colonne ou carré.
 
@@ -15,3 +23,12 @@ Chemin: Une suite d'états, chacun obtenu à partir du précédent par une actio
 Solution: Un chemin d'états qui va de l'état initial à l'état but.
 
 Chaque action pose exactement une valeur. Une solution fait exactement T action. Où T est le nombre total de jetons - le nombre de jetons au départ.
+
+3) Espace d'états et backtracking
+L'espace d'états forme un graphe: chaque états est un sommet, et chaque action rélie un état à l'état suivant. Ce graphe n'a pas de cycle, puisque chaque action place au moins une valeur. Par contre, deux chemins différents peuvent amener au même état.
+On le parcourt en profondeur avec du backtracking:
+-Si l'état est un état but (grille complète et valide), on a trouvé une solution.
+-Si l'état a déjà été visité, on abandonne cette branche.
+-Sinon, on essaie chaque action possible: on pose une valeur, on explore la suite, et en cas d'échec on annule la pose de la valeur et on essaie avec la suivante.
+
+L'algorithme est complet: si il existe une solution, il la trouve.
