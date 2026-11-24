@@ -128,24 +128,26 @@ def count_solutions(mat, limit=2):
     # Une grille de départ incohérente n'a aucune solution
     if not grid_is_consistent(mat):
         return 0
-    return count(mat, limit)
+    dom = init_domains(mat)
+    if dom is None:
+        return 0
+    return count(dom, limit)
 
 
-def count(mat, limit):
-    # Chercher une case vide
-    for i in range(9):
-        for j in range(9):
-            if mat[i, j] == 0:
-                c = 0
-                for k in range(1, 10):
-                    if is_valid(mat, i, j, k):
-                        mat[i, j] = k
-                        c += count(mat, limit - c)
-                        mat[i, j] = 0
-                        if c >= limit:
-                            return c
+# Compte les solutions avec la propagation, s'arrête dès qu'on en a trouvé limit
+def count(dom, limit):
+    cell = select_mrv(dom)
+    # Toutes les cases sont fixées : on a trouvé une solution
+    if cell is None:
+        return 1
+    c = 0
+    for v in dom[cell]:
+        new = copy_domains(dom)
+        if assign(new, cell, v):
+            c += count(new, limit - c)
+            if c >= limit:
                 return c
-    return 1
+    return c
 
 
 def generate_sudoku(n):
